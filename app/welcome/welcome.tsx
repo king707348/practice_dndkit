@@ -18,6 +18,7 @@ export function Welcome() {
               className="hidden w-full dark:block"
             />
           </div>
+          <a href="./product">Second</a>
         </header>
         <div className="max-w-[300px] w-full space-y-6 px-4">
           <nav className="rounded-3xl border border-gray-200 p-6 dark:border-gray-700 space-y-4">
