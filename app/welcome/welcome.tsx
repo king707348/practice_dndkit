@@ -87,4 +87,4 @@ const resources = [
       </svg>
     ),
   },
-];
+]

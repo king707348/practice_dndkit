@@ -1,34 +1,69 @@
+import React, { useState } from 'react';
+import {DndContext} from '@dnd-kit/core';
+import type {DragEndEvent, DragStartEvent} from '@dnd-kit/core';
+import {Sortable} from "./cartKit"
+
+interface State {
+    strength: number | string,
+    intelligence: number | string,
+    leadership: number | string,
+}
+interface Weapon {
+    name: string,
+    isOwn: boolean,
+    stat?: State
+}
+interface Equipment {
+    trick: {
+        weapon: Weapon
+    },
+    weapon: Weapon
+}
+interface AccountItem {
+    id: number,
+    name: string,
+    level: number,
+    isOwn: boolean,
+    equipment: Equipment
+}
+interface Info {
+    limit_level: number,
+    game_season: number
+}
+interface ItemType {
+    info: Info,
+    account: AccountItem[]
+}
+
 export function Product() {
-    console.log(three_kingdom[0].account)
+    const [Items, setItems] = useState(three_kingdom[0].account)
+    function handleDragEnd(event: DragEndEvent) {
+        const {active, over} = event;
+        console.log('drag end', {active, over});
+        setItems((prev) => {
+            const updatedItems = [...prev];
+            const movedItem = updatedItems.splice(active.id, 1)[0].id;
+            console.log(active.id, movedItem, updatedItems)
+            updatedItems.splice(active, 0, movedItem);
+            
+            return updatedItems;
+        })
+        
+    }
+    function handleDragStart(event: DragStartEvent) {
+        console.log('drag start', event);
+    }
+
     return (
         <main className="flex">
-            <div className="m-1">
-                {
-                    three_kingdom[0].account.map((d, idx) => (
-                        d.isOwn && (
-                            <div key={idx} className="flex p-4 m-1 border border-2 ">
-                                {d.name}
-                            </div>
-                        )
-                    ))
-                }
-            </div>
-            <div className="m-1">
-                {
-                    three_kingdom[0].account.map((d, idx) => (
-                        !d.isOwn && (
-                            <div key={idx} className="flex p-4 m-1 border border-2 ">
-                                {d.name}
-                            </div>
-                        )
-                    ))
-                }
-            </div>
+            <DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
+                <Sortable data={three_kingdom}></Sortable>
+            </DndContext>
         </main>
     )
 }
 
-const three_kingdom = [
+const three_kingdom:ItemType[] = [
     {
         info: {
             limit_level: 5,
@@ -36,6 +71,7 @@ const three_kingdom = [
         },
         account: [
             {
+                id: 1,
                 name: "劉備",
                 level: 2,
                 isOwn: true,
@@ -58,6 +94,7 @@ const three_kingdom = [
                 }
             },
             {
+                id: 2,
                 name: "關羽",
                 level: 1,
                 isOwn: true,
@@ -80,6 +117,7 @@ const three_kingdom = [
                 }
             },
             {
+                id: 3,
                 name: "張飛",
                 level: 5,
                 isOwn: true,
@@ -102,6 +140,7 @@ const three_kingdom = [
                 }
             },
             {
+                id: 4,
                 name: "諸葛亮",
                 level: 1,
                 isOwn: true,
@@ -124,6 +163,7 @@ const three_kingdom = [
                 }
             },
             {
+                id: 5,
                 name: "馬超",
                 level: 0,
                 isOwn: false,
