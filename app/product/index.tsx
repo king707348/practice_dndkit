@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { useState } from "react"
+import { DndContext } from "@dnd-kit/core"
+
 import Item from "../components/itemList"
+
 
 interface Weapon {
     name: string
@@ -22,7 +25,7 @@ interface ItemAccount {
         weapon: Weapon
     }
 }
-interface KingdomData {
+interface ItemType {
     info: {
         limit_level: number
         game_season: number
@@ -30,15 +33,29 @@ interface KingdomData {
     account: ItemAccount[]
 }
 
-export function Product() {
+export function Product() { 
+    const [item, setItems] = useState(three_kingdom)
+
+    const handleDragEnd = (event:any) => {
+        const { active, over } = event;
+        console.log(active, over)
+
+        if (active.id !== over.id) {
+            setItems(item);
+        }
+    }
     return (
         <main className="flex">
-            <Item data={three_kingdom[0].account.map(acc => ({ id: acc.id, name: acc.name }))} />
+            <div className="flex-1 flex flex-col">
+                <Item 
+                    data={three_kingdom[0].account.map(acc => ({ id: acc.id, name: acc.name }))} 
+                />
+            </div>
         </main>
     )
 }
 
-const three_kingdom:KingdomData[] = [
+const three_kingdom:ItemType[] = [
     {
         info: {
             limit_level: 5,
@@ -104,7 +121,7 @@ const three_kingdom:KingdomData[] = [
                         }
                     },
                     weapon: {
-                        name: "",
+                        name: "長劍",
                         isOwn: false,
                         stat: {
                             strength: 12,

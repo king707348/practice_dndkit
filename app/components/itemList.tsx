@@ -38,7 +38,7 @@ export default function Item({ data }: Props) {
 
     function handleDragEnd(event: any) {
         const { active, over } = event;
-
+        console.log(active, over)
         if (!over) return
 
         if (active.id !== over.id) {
@@ -65,7 +65,7 @@ export default function Item({ data }: Props) {
                 style={style} 
                 {...attributes} 
                 {...listeners}
-                className='p-3 border-1'
+                className='flex flex-row p-3'
             >
                 {item.name}
             </div>
@@ -90,7 +90,6 @@ export default function Item({ data }: Props) {
             collisionDetection={closestCenter}
             onDragEnd={handleDragEnd}
         >
-            <div className='flex flex-col'>
             <SortableContext items={items.map(i => i.id)} strategy={verticalListSortingStrategy}>
                 {
                     items.map((item) => (
@@ -98,7 +97,6 @@ export default function Item({ data }: Props) {
                     ))
                 }
             </SortableContext>
-            </div>
         </DndContext>
     )
 }
