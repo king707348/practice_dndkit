@@ -64,7 +64,6 @@ export function Product() {
 }
 
 const three_kingdom:ItemType[] = [
-const three_kingdom:ItemType[] = [
     {
         info: {
             limit_level: 5,
@@ -72,7 +71,6 @@ const three_kingdom:ItemType[] = [
         },
         account: [
             {
-                id: 1,
                 id: 1,
                 name: "劉備",
                 level: 2,
@@ -97,7 +95,6 @@ const three_kingdom:ItemType[] = [
             },
             {
                 id: 2,
-                id: 2,
                 name: "關羽",
                 level: 1,
                 isOwn: true,
@@ -120,7 +117,6 @@ const three_kingdom:ItemType[] = [
                 }
             },
             {
-                id: 3,
                 id: 3,
                 name: "張飛",
                 level: 5,
@@ -145,7 +141,6 @@ const three_kingdom:ItemType[] = [
             },
             {
                 id: 4,
-                id: 4,
                 name: "諸葛亮",
                 level: 1,
                 isOwn: true,
@@ -168,7 +163,6 @@ const three_kingdom:ItemType[] = [
                 }
             },
             {
-                id: 5,
                 id: 5,
                 name: "馬超",
                 level: 0,

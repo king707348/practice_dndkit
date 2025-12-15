@@ -20,7 +20,7 @@ interface Props {
     data: ItemType[]
 }
 
-export default function Item({ data }: Props) {
+export default function Item({data}: Props) {
     const [items, setItems] = useState<ItemType[]>(Array.isArray(data) ? data : [])
     // 避免水合不匹配
     const [isClient, setIsClient] = useState(false)
@@ -37,8 +37,8 @@ export default function Item({ data }: Props) {
     )
 
     function handleDragEnd(event: any) {
-        const { active, over } = event;
-        console.log(active, over)
+        const { active, over } = event
+
         if (!over) return
 
         if (active.id !== over.id) {

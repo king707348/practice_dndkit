@@ -1,6 +1,4 @@
-import { Draggable } from "./draggable"
-import { Droppable } from "./droppable"
-
+import Item from "../components/itemList";
 interface State {
     strength: number | string,
     intelligence: number | string,
@@ -37,18 +35,14 @@ interface SortableProps {
 }
 
 export function Sortable({data}: SortableProps){
-    console.log(data[0].account)
+    // map account items to the shape expected by Item component ({id, name})
+    const items = data[0]?.account.map((a) => ({ id: a.id, name: a.name })) ?? [];
 
     return (
         <div className="flex">
-            <Droppable 
-                id="test"
-                className="flex flex-col p-4 m-1 border-2"
-            >
-                {data[0]?.account.map((account) => (
-                    <Draggable key={account.id} db={account} />
-                ))}
-            </Droppable>
+            <div className="w-full">
+                <Item data={items} />
+            </div>
         </div>
     )
 }
