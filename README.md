@@ -68,11 +68,3 @@ npm run typecheck
 - 專案使用 TypeScript，如需更嚴格型別檢查，請執行 `npm run typecheck`
 
 ---
-
-## 貢獻 & 許可證 ❤️
-
-歡迎發 PR 或 Issue。此專案尚未指明授權條款，若要公開發佈請補上 `LICENSE`。
-
----
-
-若你想要我把 README 翻成英文、加入更詳細的使用範例或範例截圖/GIF，我可以繼續補充。
