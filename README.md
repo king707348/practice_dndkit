@@ -1,87 +1,78 @@
-# Welcome to React Router!
+# practice_dndkit ✅
 
-A modern, production-ready template for building full-stack React applications using React Router.
+**簡介**
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
+這是一個使用 React + TypeScript 的範例專案，用來練習 `@dnd-kit` 的拖放功能與 `react-router` 的路由整合。專案同時採用 Vite 開發環境與 Tailwind CSS 配置。
 
-## Features
+---
 
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
+## 功能亮點 ✨
 
-## Getting Started
+- 使用 `@dnd-kit/core`、`@dnd-kit/sortable` 等實作拖放/排序功能
+- 範例頁面包含 `Draggable` / `Droppable` 的基本示範
+- 具有商品/購物車相關元件（`cartKit.tsx`）與範例路由
+- 使用 `react-router` 的 server-side build / dev 腳本（見 `package.json`）
 
-### Installation
+---
 
-Install the dependencies:
+## 快速開始 ⚡
+
+先安裝相依套件：
 
 ```bash
 npm install
 ```
 
-### Development
-
-Start the development server with HMR:
+開發模式（啟動本地開發伺服器）：
 
 ```bash
 npm run dev
 ```
 
-Your application will be available at `http://localhost:5173`.
-
-## Building for Production
-
-Create a production build:
+建置：
 
 ```bash
 npm run build
 ```
 
-## Deployment
-
-### Docker Deployment
-
-To build and run using Docker:
+啟動（執行已建置的 server）：
 
 ```bash
-docker build -t my-app .
-
-# Run the container
-docker run -p 3000:3000 my-app
+npm start
 ```
 
-The containerized application can be deployed to any platform that supports Docker, including:
+其他工具：
 
-- AWS ECS
-- Google Cloud Run
-- Azure Container Apps
-- Digital Ocean App Platform
-- Fly.io
-- Railway
-
-### DIY Deployment
-
-If you're familiar with deploying Node applications, the built-in app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
-
+```bash
+npm run typecheck
 ```
-├── package.json
-├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
-├── build/
-│   ├── client/    # Static assets
-│   └── server/    # Server-side code
-```
-
-## Styling
-
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
 
 ---
 
-Built with ❤️ using React Router.
+## 專案結構 🔧
+
+- `app/` - 應用程式入口與路由配置
+  - `components/` - 可重用 UI 元件（例如 `itemList.tsx`）
+  - `product/` - 商品相關頁面與 `cartKit.tsx`
+  - `welcome/` - 拖放範例元件（`Draggable.tsx`, `Droppable.tsx`）
+- `public/` - 靜態資源
+- `vite.config.ts`, `tsconfig.json` - 建置與 TypeScript 設定
+- `Dockerfile` - （選用）容器化配置
+
+---
+
+## 開發提示 💡
+
+- 範例拖拉檔案位置：`app/welcome/`（可直接閱讀 `Draggable.tsx` 與 `Droppable.tsx`）
+- 若要新增頁面，請參考 `app/routes.ts` 與 `react-router.config.ts`
+- 專案使用 TypeScript，如需更嚴格型別檢查，請執行 `npm run typecheck`
+
+---
+
+## 貢獻 & 許可證 ❤️
+
+歡迎發 PR 或 Issue。此專案尚未指明授權條款，若要公開發佈請補上 `LICENSE`。
+
+---
+
+若你想要我把 README 翻成英文、加入更詳細的使用範例或範例截圖/GIF，我可以繼續補充。
